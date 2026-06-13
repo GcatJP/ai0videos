@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="en">
+  <!-- ============================================================
+     ADVENTURE ISLAND — units.html
+     ============================================================
+     CUSTOMISE THIS SECTION:
+       • units[]  — label, url, colour for each button
+       • --bg     — background gradient (one line, same everywhere)
+
+     GRID LAYOUT:
+       • Landscape tablet/desktop → 5 × 4
+       • Landscape iPhone         → 4 × 5
+       • Portrait tablet/desktop  → 2 × 10
+       • Portrait iPhone          → 2 × 10
+     ============================================================ -->
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0,
+          maximum-scale=1.0, user-scalable=no"
+    />
+
+    <!-- iOS Home Screen behaviour -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Adventure Island" />
+
+    <!-- App icons (multiple resolutions) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="images/Ai0.180.png" />
+    <link rel="apple-touch-icon" sizes="167x167" href="images/Ai0.167.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="images/Ai0.152.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="images/Ai0.120.png" />
+
+    <link rel="manifest" href="manifest.json" />
+
+    <title>Units 11-20</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      :root {
+        --font-chalk:
+          "Chalkboard SE", "Chalkboard", "Comic Neue", "Comic Sans MS", cursive;
+        --bg: linear-gradient(to bottom, #e7523f, #b91505);
+        --colour-btn-border: #000000;
+      }
+
+      html {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        max-width: 100vw;
+      }
+
+      body {
+        font-family: var(--font-chalk);
+        background: var(--bg);
+        width: 100%;
+        max-width: 100vw;
+        height: 100vh;
+        height: 100dvh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* ----------------------------------------------------------
+         BACK BUTTON
+      ---------------------------------------------------------- */
+      .back-btn {
+        font-family: var(--font-chalk);
+        font-weight: bold;
+        color: yellow;
+        background: rgba(0, 0, 0, 0.3);
+        border: 2px solid yellow;
+        border-radius: 10px;
+        text-decoration: none;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-user-select: none;
+        user-select: none;
+        -webkit-text-stroke: 1px orange;
+        transition:
+          transform 0.1s ease,
+          background 0.15s ease;
+        align-self: flex-start;
+        flex-shrink: 0;
+      }
+
+      .back-btn:active {
+        transform: scale(0.97);
+        background: rgba(0, 0, 0, 0.5);
+      }
+
+      /* ----------------------------------------------------------
+         GRID WRAPPER
+      ---------------------------------------------------------- */
+      .grid-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+      }
+
+      /* ----------------------------------------------------------
+         BUTTONS
+      ---------------------------------------------------------- */
+      .btn {
+        font-family: var(--font-chalk);
+        font-weight: bold;
+        color: yellow;
+        border: 2px solid var(--colour-btn-border);
+        border-radius: 10px;
+        text-decoration: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        overflow: hidden;
+        -webkit-user-select: none;
+        user-select: none;
+        -webkit-text-stroke: 2px orange;
+        transition:
+          transform 0.1s ease,
+          opacity 0.15s ease;
+      }
+
+      .btn:active {
+        transform: scale(0.97);
+        opacity: 0.85;
+      }
+
+      /* ----------------------------------------------------------
+         CORNER IMAGE
+      ---------------------------------------------------------- */
+      .corner-img {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        pointer-events: none;
+        z-index: 10;
+      }
+
+      /* ----------------------------------------------------------
+         LANDSCAPE — 5 × 4
+      ---------------------------------------------------------- */
+      @media screen and (orientation: landscape) {
+        .back-btn {
+          font-size: clamp(1.2rem, 2vw, 2rem);
+          padding: 0.3em 1em;
+          margin: 1.5vh 0 0 2vw;
+        }
+
+        .grid-wrapper {
+          flex: 1;
+          padding: 1vh 2vw 2vh;
+        }
+
+        .grid {
+          display: grid;
+          grid-template-columns: repeat(5, 1fr);
+          grid-template-rows: repeat(4, 1fr);
+          gap: clamp(4px, 1vw, 12px);
+          width: min(96vw, 960px);
+          height: min(72vh, 600px);
+        }
+
+        .btn {
+          font-size: clamp(0.8rem, 5vw, 8rem);
+        }
+
+        .corner-img {
+          top: 0;
+          right: 0;
+          bottom: auto;
+          width: clamp(50px, 10vw, 130px);
+          margin-top: 20px;
+          margin-right: 20px;
+        }
+      }
+
+      /* ----------------------------------------------------------
+         LANDSCAPE IPHONE — 4 × 5  (max-height: 450px)
+      ---------------------------------------------------------- */
+      @media screen and (orientation: landscape) and (max-height: 450px) {
+        body {
+          overflow: hidden;
+          width: 100vw;
+          max-width: 100vw;
+        }
+
+        .back-btn {
+          font-size: clamp(0.7rem, 1.5vw, 1.2rem) !important;
+          padding: 0.15em 0.6em !important;
+          margin: 0.3vh 0 0 2vw !important;
+        }
+
+        .grid-wrapper {
+          flex: 1 !important;
+          padding: 0 2vw 0 !important;
+        }
+
+        .grid {
+          grid-template-columns: repeat(4, 1fr) !important;
+          grid-template-rows: repeat(5, 1fr) !important;
+          gap: clamp(2px, 0.5vw, 6px) !important;
+          width: min(96vw, 800px) !important;
+          height: min(55vh, 240px) !important;
+        }
+
+        .btn {
+          font-size: clamp(0.6rem, 3.5vw, 3rem) !important;
+        }
+
+        .corner-img {
+          width: clamp(30px, 7vw, 70px);
+          margin-top: 10px;
+          margin-right: 10px;
+        }
+      }
+
+      /* ----------------------------------------------------------
+         PORTRAIT — 2 × 10
+      ---------------------------------------------------------- */
+      @media screen and (orientation: portrait) {
+        body {
+          overflow-y: auto;
+          height: auto;
+          min-height: 100dvh;
+        }
+
+        .back-btn {
+          font-size: clamp(1.2rem, 3vw, 2.5rem);
+          padding: 0.4em 1em;
+          margin: 2vw 0 0 4vw;
+        }
+
+        .grid-wrapper {
+          padding: 2vw 4vw 4vw;
+        }
+
+        .grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: clamp(6px, 2vw, 16px);
+          width: 100%;
+          max-width: 500px;
+        }
+
+        .btn {
+          font-size: clamp(1rem, 7vw, 4rem);
+          height: clamp(50px, 14vw, 75px);
+        }
+
+        .corner-img {
+          width: clamp(50px, 18vw, 120px);
+          margin-bottom: 20px;
+          margin-right: 20px;
+        }
+      }
+
+      /* ----------------------------------------------------------
+         PORTRAIT IPHONE — 2 × 10  (max-width: 430px)
+         To move grid up: decrease margin on .back-btn
+         To move grid down: increase margin on .back-btn
+      ---------------------------------------------------------- */
+      @media screen and (orientation: portrait) and (max-width: 430px) {
+        body {
+          overflow-y: auto;
+          height: auto;
+          min-height: 100dvh;
+        }
+
+        .back-btn {
+          font-size: clamp(1rem, 4vw, 1.8rem) !important;
+          padding: 0.3em 0.9em !important;
+          margin: 1vw 0 0 4vw !important;
+        }
+
+        .grid-wrapper {
+          padding: 1vw 4vw 4vw !important;
+        }
+
+        .grid {
+          grid-template-columns: repeat(2, 1fr) !important;
+          gap: clamp(4px, 1.5vw, 10px) !important;
+          width: 100% !important;
+          max-width: 100% !important;
+        }
+
+        .btn {
+          font-size: clamp(0.9rem, 7vw, 2.5rem) !important;
+          height: clamp(44px, 13vw, 80px) !important;
+        }
+
+        .corner-img {
+          width: clamp(40px, 14vw, 80px) !important;
+          margin-bottom: 10px;
+          margin-right: 10px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <a class="back-btn" href="index.html">← Back</a>
+
+    <div class="grid-wrapper">
+      <div class="grid" id="main-grid"></div>
+    </div>
+
+    <img class="corner-img" src="images/Sami0.png" alt="" aria-hidden="true" />
+
+    <script>
+      const units = [
+        {
+          label: "11a",
+          url: "https://player.mediadelivery.net/play/597166/d87c8942-437a-41db-9b4c-3d5b64363717",
+          colour: "#b11b05",
+        },
+        {
+          label: "11b",
+          url: "https://player.mediadelivery.net/play/597166/ab8b6135-e165-4c22-a062-b15c743e3bdd",
+          colour: "#b11b05",
+        },
+        {
+          label: "12a",
+          url: "https://player.mediadelivery.net/play/597166/6a4b493b-bdb8-4a0b-9dd1-dca7e1c0e971",
+          colour: "#8c1a04",
+        },
+        {
+          label: "12b",
+          url: "https://player.mediadelivery.net/play/597166/a884e6c5-77f5-41d0-a595-f8bd2ad94659",
+          colour: "#8c1a04",
+        },
+        {
+          label: "13a",
+          url: "https://player.mediadelivery.net/play/597166/5e723223-4bb5-4f03-aca6-563d11562748",
+          colour: "#6b1403",
+        },
+        {
+          label: "13b",
+          url: "https://player.mediadelivery.net/play/597166/0a57f7da-2ae7-445c-96f6-9db359ba4f9e",
+          colour: "#6b1403",
+        },
+        {
+          label: "14a",
+          url: "https://player.mediadelivery.net/play/597166/dc05453b-35ce-4339-bf87-cb4e1b41c35c",
+          colour: "#b11b05",
+        },
+        {
+          label: "14b",
+          url: "https://player.mediadelivery.net/play/597166/b58152e1-d6f3-40f3-baa9-a54c5f2f055b",
+          colour: "#b11b05",
+        },
+        {
+          label: "15a",
+          url: "https://player.mediadelivery.net/play/597166/b5229faf-e796-487b-9edb-8511a26db96f",
+          colour: "#8c1a04",
+        },
+        {
+          label: "15b",
+          url: "https://player.mediadelivery.net/play/597166/89e51090-5b2e-40f2-ba79-d209ff8eada2",
+          colour: "#8c1a04",
+        },
+        {
+          label: "16a",
+          url: "https://player.mediadelivery.net/play/597166/937b02e3-9914-499f-a659-3466d09ff187",
+          colour: "#6b1403",
+        },
+        {
+          label: "16b",
+          url: "https://player.mediadelivery.net/play/597166/850258bc-fdb1-4d7b-af6d-782d3448e48a",
+          colour: "#6b1403",
+        },
+        {
+          label: "17a",
+          url: "https://player.mediadelivery.net/play/597166/841393dd-a1b8-4629-b4b1-a2eecf52aea9",
+          colour: "#b11b05",
+        },
+        {
+          label: "17b",
+          url: "https://player.mediadelivery.net/play/597166/b14aaf4e-ee88-40c5-966d-ea36ba95fa4c",
+          colour: "#b11b05",
+        },
+        {
+          label: "18a",
+          url: "https://player.mediadelivery.net/play/597166/e90dd26b-8c21-41a3-a02b-02cb1b8c5357",
+          colour: "#8c1a04",
+        },
+        {
+          label: "18b",
+          url: "https://player.mediadelivery.net/play/597166/e02fc294-5d43-4d79-913e-6d5c0fa6594c",
+          colour: "#8c1a04",
+        },
+        {
+          label: "19a",
+          url: "https://player.mediadelivery.net/play/597166/03245ff1-8071-4f23-a83d-9a1cf4c8d588",
+          colour: "#6b1403",
+        },
+        {
+          label: "19b",
+          url: "https://player.mediadelivery.net/play/597166/0ab70a2f-b973-4463-81d8-f2297ce3c282",
+          colour: "#6b1403",
+        },
+        {
+          label: "20a",
+          url: "https://player.mediadelivery.net/play/597166/34695686-16a2-46c1-ac48-b269e8ebc639",
+          colour: "#b11b05",
+        },
+        {
+          label: "20b",
+          url: "https://player.mediadelivery.net/play/597166/4094284e-b245-4f05-8b23-95c9fecf58e0",
+          colour: "#b11b05",
+        },
+      ];
+
+      function buildGrid() {
+        const grid = document.getElementById("main-grid");
+        grid.innerHTML = "";
+        units.forEach(function (unit) {
+          var link = document.createElement("a");
+          link.className = "btn";
+          link.href = unit.url;
+          link.style.backgroundColor = unit.colour;
+          link.textContent = unit.label;
+          grid.appendChild(link);
+        });
+      }
+
+      buildGrid();
+
+      var resizeTimer;
+      window.addEventListener("resize", function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(buildGrid, 150);
+      });
+    </script>
+  </body>
+</html>
+```
